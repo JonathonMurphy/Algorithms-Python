@@ -1,23 +1,14 @@
-unsortedArray = [6,7,1.55,4,5,8,9,3,2,1,5,4,6,9,8,5,7,4,5,15,85,1551]
+unsortedArray = [5,6,4,4,3,2,1]
 print(f"Unsorted Array: {unsortedArray}")
 
 
 def bubbleSort(array):
-    trueArray = []
-    sortedArray = array[:]
-    sortedArrayLength = len(sortedArray)
-    for item in sortedArray:
-        itemIndex = sortedArray.index(item)
-        if itemIndex != sortedArrayLength - 1:
-            if item > sortedArray[itemIndex + 1]:
-                sortedArray.pop(itemIndex)
-                sortedArray.insert(itemIndex + 1, item)
-                trueArray.append(False)
-    if not all(trueArray):
-        bubbleSort(sortedArray)
-    else:
-        print(f"Sorted Array: {sortedArray}")
+    sortedArray = array[:] #duplicate the array to be sorted
+    sortedArrayLength = len(sortedArray) # Get the length of the array
+    for index in range(sortedArrayLength): # Loop through all the items in the array by their index
+        for item in range(0, sortedArrayLength - index - 1):
+            if sortedArray[item] > sortedArray[item + 1]:
+                sortedArray[item], sortedArray[item + 1] = sortedArray[item + 1], sortedArray[item]
+    return sortedArray
 
-
-
-bubbleSort(unsortedArray)
+print(f"Sorted Array: {bubbleSort(unsortedArray)}")
