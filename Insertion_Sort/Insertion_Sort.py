@@ -1,4 +1,15 @@
-unsortedArray = [6,7,1.55,4,5,8,9,3,2,1,5,4,6,9,8,5,7,4,5,15,85,1551]
+unsortedArray = [5,7,6,9,8,4,2,1,3]
 
 def insertionSort(array):
-    for item in array:
+    sortedArray = array[:]
+    for index in range(1, len(sortedArray)):
+        key = sortedArray[index]
+        indexToTheLeft = index - 1
+        while indexToTheLeft >= 0 and key < sortedArray[indexToTheLeft]:
+            sortedArray[indexToTheLeft + 1] = sortedArray[indexToTheLeft]
+            indexToTheLeft -= 1
+        sortedArray[indexToTheLeft + 1 ] = key
+    return sortedArray
+
+
+print(insertionSort(unsortedArray))
